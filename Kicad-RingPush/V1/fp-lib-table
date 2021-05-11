@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name CarlosEDP_Lib)(type KiCad)(uri /Users/cdepaula/repos/PMOD1/Kicad-RingPush/lib/CarlosEDP_Lib)(options "")(descr ""))
+  (lib (name pmod-conn_6x2)(type KiCad)(uri /Users/cdepaula/repos/PMOD1/Kicad-RingPush/lib/kicad-pmod/pmod-conn_6x2.pretty)(options "")(descr ""))
+  (lib (name lib)(type KiCad)(uri /Users/cdepaula/repos/PMOD1/Kicad-RingPush/lib/OSHW_logo_KiCad_scalable/lib)(options "")(descr ""))
+)

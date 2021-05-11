@@ -36,7 +36,7 @@ F 3 "" H 3900 3850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L PMOD:PMOD-Device-x2-Type-1A-GPIO PMOD1
+L RingPush-PMOD-rescue:PMOD-Device-x2-Type-1A-GPIO-PMOD PMOD1
 U 1 1 607AB0A6
 P 3700 2850
 F 0 "PMOD1" H 3625 3775 50  0000 C CNN
