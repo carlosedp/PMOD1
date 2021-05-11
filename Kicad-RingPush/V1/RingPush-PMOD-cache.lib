@@ -133,11 +133,11 @@ X S2 S2 300 -100 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# PMOD_PMOD-Device-x2-Type-1A-GPIO
+# RingPush-PMOD-rescue_PMOD-Device-x2-Type-1A-GPIO-PMOD
 #
-DEF PMOD_PMOD-Device-x2-Type-1A-GPIO PMOD 0 40 Y Y 1 F N
+DEF RingPush-PMOD-rescue_PMOD-Device-x2-Type-1A-GPIO-PMOD PMOD 0 40 Y Y 1 F N
 F0 "PMOD" -130 -50 50 H V C CNN
-F1 "PMOD_PMOD-Device-x2-Type-1A-GPIO" -360 -710 50 V I L CNN
+F1 "RingPush-PMOD-rescue_PMOD-Device-x2-Type-1A-GPIO-PMOD" -360 -710 50 V I L CNN
 F2 "pmod-conn_6x2:pmod_pin_array_6x2" -450 -710 60 V I L CNN
 F3 "" -50 300 60 H V C CNN
 $FPLIST
