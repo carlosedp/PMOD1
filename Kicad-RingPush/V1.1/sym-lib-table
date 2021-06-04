@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name CarlosEDP_Lib)(type Legacy)(uri /Users/cdepaula/repos/PMOD1/Kicad-RingPush/lib/CarlosEDP_Lib/CarlosEDP_Lib.lib)(options "")(descr ""))
+  (lib (name pmod)(type Legacy)(uri /Users/cdepaula/repos/PMOD1/Kicad-RingPush/lib/kicad-pmod/pmod.lib)(options "")(descr ""))
+  (lib (name RingPush-PMOD-rescue)(type Legacy)(uri ${KIPRJMOD}/RingPush-PMOD-rescue.lib)(options "")(descr ""))
+)
