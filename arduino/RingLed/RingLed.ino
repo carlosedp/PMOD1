@@ -1,5 +1,5 @@
 #define ENCODER_DO_NOT_USE_INTERRUPTS
-#include <Encoder.h>
+#include "Encoder/Encoder.h"
 
 // Using NodeMCU pins
 // RingLED Pins
@@ -25,7 +25,8 @@ void setup() {
   pinMode(clockPin, OUTPUT);
   pinMode(BankA, OUTPUT);
   pinMode(BankB, OUTPUT);
-  // Set both banks to LOW as default since there is no pull-down on V1 boards
+  pinMode(encoder0PinSW, INPUT);
+  // Set both banks to LOW as default since there is no pull-down resistors on V1 boards
   digitalWrite(BankA, LOW);
   digitalWrite(BankB, LOW);
 }
@@ -71,6 +72,12 @@ void ringLED() {
 }
 
 void loop() {
+  // Reset interval to default 200ms on button push
+  if (digitalRead(encoder0PinSW) == HIGH) {
+    interval = 200;
+    Serial.print("Reset interval to: ");
+    Serial.println(interval);
+  }
   ringLED();
   rotEncoder();
 }
