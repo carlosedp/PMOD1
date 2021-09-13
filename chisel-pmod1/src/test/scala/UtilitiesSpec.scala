@@ -12,7 +12,7 @@ class ParseArgumentsSpec extends AnyFlatSpec with Matchers {
     assert(remainingargs === List("generated", "singleparam1"))
   }
 
-  "ParseArguments" should "parse multiple parameters" in {
+  it should "parse multiple parameters" in {
     val args                    = Array("-param1", "data1", "generated", "-param2", "data2", "-anotherparam")
     val (params, remainingargs) = ParseArguments(args, List("param1", "param2"))
 
@@ -20,7 +20,7 @@ class ParseArgumentsSpec extends AnyFlatSpec with Matchers {
     assert(remainingargs === List("generated", "-anotherparam"))
   }
 
-  "ParseArguments" should "parse one parameter and ignore a wrong one" in {
+  it should "parse one parameter and ignore a wrong one" in {
     val args                    = Array("-param1", "-wrong", "generated", "-anotherparam", "mydata", "-param2", "data2")
     val (params, remainingargs) = ParseArguments(args, List("param1", "param2"))
 
@@ -28,7 +28,7 @@ class ParseArgumentsSpec extends AnyFlatSpec with Matchers {
     assert(remainingargs === List("-wrong", "generated", "-anotherparam", "mydata"))
   }
 
-  "ParseArguments" should "parse one parameter with double dash('--')" in {
+  it should "parse one parameter with double dash('--')" in {
     val args                    = Array("--param1", "data1", "generated", "--anotherparam", "mydata", "-param2", "data2")
     val (params, remainingargs) = ParseArguments(args, List("param1", "param2"), "--")
 
@@ -36,7 +36,7 @@ class ParseArgumentsSpec extends AnyFlatSpec with Matchers {
     assert(remainingargs === List("generated", "--anotherparam", "mydata", "-param2", "data2"))
   }
 
-  "ParseArguments" should "parse one parameter with single dash and pass double dash ones" in {
+  it should "parse one parameter with single dash and pass double dash ones" in {
     val args                    = Array("-param1", "data1", "generated", "--anotherparam", "mydata", "-param2", "data2")
     val (params, remainingargs) = ParseArguments(args, List("param1"), "-")
 
