@@ -1,4 +1,4 @@
-19081725125433113
+19235610561041359
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -6124,6 +6124,41 @@ capacitor tantalum
 0
 2
 2
+CarlosEDP_Lib
+CONN-10029449-111RLF
+
+
+0
+23
+20
+CarlosEDP_Lib
+PMOD1-QRCodeBlack
+
+
+0
+0
+0
+CarlosEDP_Lib
+QSFP_PCB
+
+
+0
+38
+38
+CarlosEDP_Lib
+RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm
+Alps rotary encoder, EC12E... with switch, vertical shaft, http://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC11/EC11E15204A3.html
+rotary encoder
+0
+7
+6
+CarlosEDP_Lib
+USB-MICRO-B-FCI-10118192-0001LF
+
+
+0
+11
+6
 Connector
 Banana_Jack_1Pin
 Single banana socket, footprint - 6mm drill
@@ -59695,6 +59730,34 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 0
 4
 4
+PMOD
+pmod_pin_array_6x2
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+PMOD
+pmod_pin_array_6x2_hs
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+PMOD
+pmod_pin_array_6x2_pins
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+PMOD
+pmod_pin_array_6x2_xadc
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
 Package_BGA
 Analog_BGA-28_4.0x6.25mm_Layout4x7_P0.8mm_Ball0.45mm_Pad0.4
 Analog BGA-28 4.0mm x 6.25mm package, pitch 0.4mm pad, based on https://www.analog.com/media/en/technical-documentation/data-sheets/8063fa.pdf
@@ -83026,3 +83089,31 @@ varistor SIOV
 0
 2
 2
+pmod-conn_6x2
+pmod_pin_array_6x2
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+pmod-conn_6x2
+pmod_pin_array_6x2_hs
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+pmod-conn_6x2
+pmod_pin_array_6x2_pins
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
+pmod-conn_6x2
+pmod_pin_array_6x2_xadc
+QMOD Pin Header 2 x 6 pins
+CONN
+0
+12
+12
