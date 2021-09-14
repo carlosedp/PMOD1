@@ -1,5 +1,6 @@
-import org.scalatest.flatspec._
-import org.scalatest.matchers.should._
+import org.scalatest._
+import flatspec._
+import matchers.should._
 import scalautils.ParseArguments
 
 class ParseArgumentsSpec extends AnyFlatSpec with Matchers {
