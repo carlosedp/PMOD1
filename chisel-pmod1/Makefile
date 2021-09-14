@@ -1,18 +1,14 @@
 SHELL = bash
-# Project name and toplevel
+# Project name
 project = toplevel
-toplevel = Toplevel
 
-scala_files = $(wildcard src/main/scala/*scala)
 generated_files = generated
-verilog_files = $(generated_files)/*.v
 
 # Targets
-chisel: $(verilog_files)   ## Generates Verilog code from Chisel sources using Mill
-$(verilog_files): $(scala_files) check-board-vars clean
+chisel: check-board-vars clean  ## Generates Verilog code from Chisel sources using Mill
 	scripts/mill $(project).run -board ${BOARD} -td $(generated_files)
 
-chisel-sbt:  ## Generates Verilog code from Chisel sources using SBT
+chisel-sbt: check-board-vars clean ## Generates Verilog code from Chisel sources using SBT
 	sbt "run -board ${BOARD} -td $(generated_files)"
 
 chisel_tests:
@@ -24,7 +20,7 @@ chisel_tests_sbt:
 check: chisel_tests ## Run Chisel tests using Mill
 check-sbt: chisel_tests_sbt ## Run Chisel tests using SBT
 
-fmt:
+fmt: ## Formats code using scalafmt and scalafix
 	scripts/mill all $(project).{reformat,fix}
 
 check-board-vars:
