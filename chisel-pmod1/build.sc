@@ -18,7 +18,8 @@ val defaultVersions = Map(
 
 trait HasChisel3 extends ScalaModule {
   override def ivyDeps = super.ivyDeps() ++ Agg(
-    ivy"edu.berkeley.cs::chisel3:${defaultVersions("chisel3")}"
+    ivy"edu.berkeley.cs::chisel3:${defaultVersions("chisel3")}",
+    ivy"com.carlosedp::scalautils:0.4.0"
   )
   override def scalacPluginIvyDeps = super.scalacPluginIvyDeps() ++ Agg(
     ivy"edu.berkeley.cs:::chisel3-plugin:${defaultVersions("chisel3")}"

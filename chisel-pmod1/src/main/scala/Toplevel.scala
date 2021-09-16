@@ -1,6 +1,6 @@
 import chisel3._
 import chisel3.util.log2Ceil
-import scalautils.ParseArguments
+import com.carlosedp.scalautils.ParseArguments
 
 // Blinking LED top layer
 class Toplevel(board: String, invReset: Boolean = true) extends Module {

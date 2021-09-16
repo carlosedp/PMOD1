@@ -24,6 +24,7 @@ libraryDependencies ++= Seq("chisel3", "chiseltest").map { dep: String =>
     .getOrElse(dep + "Version", defaultVersions(dep))
 }
 libraryDependencies += "org.scalatest"                     %% "scalatest"        % defaultVersions("scalatest")
+libraryDependencies += "com.carlosedp"                     %% "scalautils"       % "0.4.0"
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % defaultVersions("organize-imports")
 
 // Aliases
