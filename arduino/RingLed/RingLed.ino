@@ -1,54 +1,42 @@
-#define ENCODER_DO_NOT_USE_INTERRUPTS
-#include "Encoder/Encoder.h"
-
-// Using NodeMCU pins
+// Using ESP32-C3 NodeMCU pins
 // RingLED Pins
-const int dataPin = D6;   //Outputs the byte to transfer
-const int loadPin = D8;   //Controls the internal transference of data in SN74HC595 internal registers
-const int clockPin = D7;  //Generates the clock signal to control the transference of data
-const int BankA = D3;     // Selects BankA - LEDs 1-8
-const int BankB = D4;     // Selects BankB - LEDs 9-16
+
+const int dataPin = 6;   //Outputs the byte to transfer (Ser)
+const int loadPin = 7;   //Controls the internal transference of data in SN74HC595 internal registers (RClk)
+const int clockPin = 8;  //Generates the clock signal to control the transference of data (SRClk)
+const int BankA = 18;     // Selects BankA - LEDs 1-8
+const int BankB = 19;     // Selects BankB - LEDs 9-16
 long interval = 200;
 
 // Encoder Pins
-int encoder0PinA = D1;
-int encoder0PinB = D2;
-int encoder0PinSW = D0;
+int encoder0PinA = 1;
+int encoder0PinB = 2;
+int encoder0PinSW = 10;
 
-Encoder myEnc(encoder0PinA, encoder0PinB);
-long position  = -999;
+int counter = 0;                    //Use this variable to store "steps"
+int currentStateClock;              //Store the status of the clock pin (HIGH or LOW)
+int lastStateClock;                 //Store the PREVIOUS status of the clock pin (HIGH or LOW)
+String currentDir ="";              //Use this to print text 
 
 void setup() {
   Serial.begin (115200);
+  Serial.print("Starting up...");
   pinMode(dataPin, OUTPUT);
   pinMode(loadPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
   pinMode(BankA, OUTPUT);
   pinMode(BankB, OUTPUT);
-  pinMode(encoder0PinSW, INPUT);
   // Set both banks to LOW as default since there is no pull-down resistors on V1 boards
   digitalWrite(BankA, LOW);
   digitalWrite(BankB, LOW);
+
+  pinMode(encoder0PinA,INPUT_PULLUP);
+  pinMode(encoder0PinB,INPUT_PULLUP);
+  pinMode(encoder0PinSW, INPUT);
+
+  lastStateClock = digitalRead(encoder0PinA);
 }
 
-void rotEncoder() {
-  long newPos = myEnc.read();
-  if (newPos != position) {
-    if (newPos > position) {
-       Serial.print("Clockwise: ");
-       interval = interval + 1;
-    } else {
-      if (interval >= 4) {
-        Serial.print("Counter Clockwise: ");
-        interval = interval - 1;
-      }
-    }
-    Serial.print(interval);
-    Serial.print(" - ");
-    Serial.println(position);
-    position = newPos;
-  }
-}
 
 unsigned long integerData = 1;
 unsigned long total = 1;
@@ -69,6 +57,36 @@ void ringLED() {
     if (total > 65535) {total = 1;}
     currentMillis = millis();
    }
+}
+
+void rotEncoder() {
+  currentStateClock = digitalRead(encoder0PinA);
+
+  // If last and current state of Clock are different, then "pulse occurred"
+  // React to only 1 state change to avoid double count
+  if (currentStateClock != lastStateClock  && currentStateClock == 1){
+
+    // If the Data state is different than the Clock state then
+    // the encoder is rotating "CCW" so we decrement
+    if (digitalRead(encoder0PinB) != currentStateClock) {
+      counter --;
+      currentDir ="Counterclockwise";
+      interval --;
+    } else {
+      // Encoder is rotating CW so increment
+      counter ++;
+      currentDir ="Clockwise";
+      interval ++;
+    }
+
+    Serial.print("Direction: ");
+    Serial.print(currentDir);
+    Serial.print(" | Counter: ");
+    Serial.println(counter);
+  }
+
+  // We save last Clock state for next loop
+  lastStateClock = currentStateClock;
 }
 
 void loop() {
