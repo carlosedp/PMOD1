@@ -1,10 +1,11 @@
 import chisel3._
 import chisel3.util.log2Ceil
+import chisel3.experimental.FlatIO
 import com.carlosedp.scalautils.ParseArguments
 
 // Blinking LED top layer
 class Toplevel(board: String, invReset: Boolean = true) extends Module {
-  val io = IO(new Bundle {
+  val io = FlatIO(new Bundle {
     // Board LEDs
     val led0 = Output(Bool())
     val led1 = Output(Bool())

@@ -9,7 +9,7 @@ filesets:
       - proginfo/boardconfig.yaml : {file_type : user, copyto : boardconfig.yaml}
 
   ulx3s-85:
-    depend: ["fusesoc:utils:generators:0.1.6"]
+    depend: ["fusesoc:utils:generators"]
     files:
       - constraints/ecp5-ulx3s.lpf: { file_type: LPF }
       - openocd/ft231x.cfg: { file_type: user }
@@ -17,7 +17,7 @@ filesets:
       - proginfo/ulx3s-template.txt: { file_type: user }
 
   artya7-35t:
-    depend: ["fusesoc:utils:generators:0.1.6"]
+    depend: ["fusesoc:utils:generators"]
     files:
       - constraints/arty_a7.xdc: { file_type: xdc }
       - openocd/digilent-hs1.cfg: { file_type: user }
@@ -29,7 +29,8 @@ generate:
     generator: chisel
     parameters:
       extraargs: "-board ulx3s"
-      chiselproject: toplevel
+      buildtool: mill
+      chiselproject: pmod1
       copy_core: true
       output:
         files:
@@ -40,7 +41,8 @@ generate:
     generator: chisel
     parameters:
       extraargs: "-board artya7-35t -invreset false"
-      chiselproject: toplevel
+      buildtool: mill
+      chiselproject: pmod1
       copy_core: true
       output:
         files:
